@@ -1,0 +1,189 @@
+﻿@model OutOfOffice.DTO.Project.ProjectOutDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProjectType)
+        </dt>
+        <dd class="col-sm-10">
+            @switch (Model.ProjectType)
+            {
+                case 0:
+                    @:E-Commerce
+                    break;
+                case 1:
+                    @:CRM
+                    break;
+                case 2:
+                    @:AI
+                    break;
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Status)
+            {
+                @:Activated
+            }
+            else
+            {
+                @:Deactivated
+            }
+        </dd>
+    </dl>
+    <div>
+        @if (User.IsInRole("1") || User.IsInRole("2"))
+        {
+            <a asp-action="Edit" class="btn btn-primary mt-2 mb-2" asp-route-id="@Model?.Id">Edit</a>
+        }
+        <a asp-action="Index" class="btn btn-danger mt-2 mb-2">Back to List</a>
+    </div>
+    <hr />
+    <h4 class="col-sm-2 mb-4">
+        @Html.DisplayNameFor(model => model.Employees)
+    </h4>
+
+    @if (User.IsInRole("1") || User.IsInRole("2"))
+    {
+
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle mb-4" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Assign employee
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @if (ViewBag.Employees.Count > 0)
+                {
+                    @foreach (var employee in ViewBag.Employees)
+                    {
+                        <li><a class="dropdown-item" asp-action="AssignEmployee" asp-route-id="@Model.Id" asp-route-employeeId="@employee.Id">@employee.FullName</a></li>
+                    }
+                }
+                else
+                {
+                    <li class="p-1">List is empty</li>
+                }
+
+
+            </ul>
+        </div>
+
+    }
+    @foreach (var emp in Model.Employees)
+    {
+        <dl class="row mb-4 card p-3">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => emp.Fullname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => emp.Fullname)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => emp.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => emp.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => emp.Subdivision)
+            </dt>
+            <dd class="col-sm-10">
+                @switch (emp.Subdivision)
+                {
+                    case 0:
+                        @:HR division
+                        break;
+                    case 1:
+                        @:Node.js division
+                        break;
+                    case 2:
+                        @:C# division
+                        break;
+                }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => emp.Position)
+            </dt>
+            <dd class="col-sm-10">
+                @switch (emp.Position)
+                {
+                    case 0:
+                        @:HR Manager
+                        break;
+                    case 1:
+                        @:Project manager
+                        break;
+                    case 2:
+                        @:Admin
+                        break;
+                    case 3:
+                        @:Employee
+                        break;
+                }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => emp.OutOfOfficeBalance)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => emp.OutOfOfficeBalance)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => emp.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @if (emp.Status)
+                {
+                    @:Activated
+                }
+                else
+                {
+                    @:Deactivated
+                }
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => emp.PeoplePartner.Fullname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => emp.PeoplePartner.Fullname)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => emp.PeoplePartner.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => emp.PeoplePartner.Email)
+            </dd>
+            @if (User.IsInRole("1") || User.IsInRole("2"))
+            {
+                <a class="btn btn-danger" style="width:fit-content" asp-action="RemoveEmployee" asp-route-id="@Model.Id" asp-route-employeeId="@emp.Id">Remove employee</a>
+            }
+        </dl>
+    }
+</div>

@@ -1,0 +1,76 @@
+﻿@model OutOfOffice.DTO.LeaveRequest.LeaveRequestOutDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Leave request</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AbsenseReason)
+        </dt>
+        <dd class = "col-sm-10">
+            @switch (Model.AbsenseReason)
+            {
+                case 0:
+                    @:Sick
+                    break;
+                case 1:
+                    @:Vacation
+                    break;
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @switch (Model.AbsenseReason)
+            {
+                case 0:
+                    @:Approved
+                    break;
+                case 1:
+                    @:Declined
+                    break;
+                case 2:
+                    @:Cancelled
+                    break;
+                case 3:
+                    @:New
+                    break;
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employee.Fullname)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Cancel" asp-route-id="@Model?.Id" class="btn btn-primary mt-2 mb-2">Cancel</a>
+    <a asp-action="Index" class="btn btn-danger mt-2 mb-2">Back to List</a>
+</div>

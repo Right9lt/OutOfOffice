@@ -1,0 +1,135 @@
+﻿@model IEnumerable<OutOfOffice.DTO.Employee.EmployeeOutDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (User.IsInRole("0"))
+{
+    <h1>My employees</h1>
+}
+
+@if (User.IsInRole("1"))
+{
+    <h1>Employess from my projects</h1>
+}
+
+@if (User.IsInRole("2"))
+{
+    <h1>Employees</h1>
+}
+
+@if (User.IsInRole("0") || User.IsInRole("2"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary mt-2 mb-2">Create New</a>
+    </p>
+}
+
+<table class="table table-striped" id="table" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subdivision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutOfOfficeBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PeoplePartner)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @switch (item.Subdivision)
+                    {
+                        case 0:
+                            @:HR division
+                            break;
+                        case 1:
+                            @:Node.js division
+                            break;
+                        case 2:
+                            @:C# division
+                            break;
+                    }
+                </td>
+                <td>
+                    @switch (item.Position)
+                    {
+                        case 0:
+                            @:HR Manager
+                            break;
+                        case 1:
+                            @:Project manager
+                            break;
+                        case 2:
+                            @:Admin
+                            break;
+                        case 3:
+                            @:Employee
+                            break;
+                    }
+                </td>
+                <td>
+                    @if (item.Status)
+                    {
+                        @:Activated
+                    }
+                    else
+                    {
+                        @:Deactivated
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OutOfOfficeBalance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PeoplePartner.Fullname)
+                </td>
+                <td class="align-middle text-center">
+                    @if (User.IsInRole("0") || User.IsInRole("2"))
+                    {
+
+
+                        <a class="btn btn-warning btn-sm" data-toggle=" tooltip" data-placement="top" title="@(item.Status ? "Deactivate" : "Activate")" asp-action="ToggleEmployeeStatus" asp-route-id="@item.Id"><i class="bi bi-ban fs-5"></i></a>
+                        <a class="btn btn-success btn-sm" data-toggle=" tooltip" data-placement="top" title="Edit" asp-action="Edit" asp-route-id="@item.Id"> <i class="bi bi-pencil fs-5"></i></a>
+                        <a class="btn btn-danger btn-sm" data-toggle=" tooltip" data-placement="top" title="Delete" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash fs-5"></i></a>
+                    }
+                    <a class="btn btn-primary btn-sm" data-toggle=" tooltip" data-placement="top" title="Details" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle fs-5"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $('#table').DataTable({
+        layout: {
+            top1: 'searchBuilder',
+        }
+    });
+</script>

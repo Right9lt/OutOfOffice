@@ -1,0 +1,114 @@
+﻿@model IEnumerable<OutOfOffice.DTO.Project.ProjectOutDTO>
+
+@{
+    ViewData["Title"] = "Index";
+
+
+}
+@if (User.IsInRole("0"))
+{
+    <h1>My employees projects</h1>
+}
+@if (User.IsInRole("1") || User.IsInRole("3"))
+{
+    <h1>My projects</h1>
+}
+@if (User.IsInRole("2"))
+{
+    <h1>Projects</h1>
+}
+
+@if (User.IsInRole("1") || User.IsInRole("2"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary mt-2 mb-2">Create New</a>
+    </p>
+}
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @switch (item.ProjectType)
+                    {
+                        case 0:
+                            @:E-Commerce
+                            break;
+                        case 1:
+                            @:CRM
+                            break;
+                        case 2:
+                            @:AI
+                            break;
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <th>
+                    @if (item.Status)
+                    {
+                        @:Activated
+                    }
+                    else
+                    {
+                        @:Deactivated
+                    }
+                </th>
+                <th>
+                    @item.Employees.Count
+                </th>
+                <td class="align-middle text-center">
+                    @if (User.IsInRole("1") || User.IsInRole("2"))
+                    {
+                        <a class="btn btn-warning btn-sm" data-toggle=" tooltip" data-placement="top" title="@(item.Status ? "Deactivate" : "Activate")" asp-action="ToggleProjectStatus" asp-route-id="@item.Id">  <i class="bi bi-ban fs-5"></i></a>
+                        <a class="btn btn-success btn-sm" data-toggle=" tooltip" data-placement="top" title="Edit" asp-action="Edit" asp-route-id="@item.Id"> <i class="bi bi-pencil fs-5"></i></a>
+                        <a class="btn btn-danger btn-sm" data-toggle=" tooltip" data-placement="top" title="Delete" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash fs-5"></i></a>
+
+
+                    }
+                    <a class="btn btn-primary btn-sm" data-toggle=" tooltip" data-placement="top" title="Details" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle fs-5"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $('#table').DataTable({
+        layout: {
+            top1: 'searchBuilder',
+        }
+    });
+</script>

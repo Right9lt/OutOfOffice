@@ -1,0 +1,89 @@
+﻿@model IEnumerable<OutOfOffice.DTO.ApprovalRequest.ApprovalRequestOutDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Approval requests</h1>
+@if (User.IsInRole("0") || User.IsInRole("1") || User.IsInRole("2"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary mt-2 mb-2">Create New</a>
+    </p>
+}
+
+<table class="table display" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Approver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveRequest.Employee.Fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveRequest.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveRequest.EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @switch (item.Status)
+                    {
+                        case 0:
+                            @:Approved
+                            break;
+                        case 1:
+                            @:Declined
+                            break;
+                        case 2:
+                            @:Cancelled
+                            break;
+                        case 3:
+                            @:New
+                            break;
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Approver.Fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveRequest.Employee.Fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveRequest.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveRequest.EndDate)
+                </td>
+                <td class="align-middle text-center">
+                    <a class="btn btn-primary btn-sm" data-toggle=" tooltip" data-placement="top" title="Details" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle fs-5"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $('#table').DataTable({
+        layout: {
+            top1: 'searchBuilder',
+        }
+    });
+</script>

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<OutOfOffice.DTO.LeaveRequest.LeaveRequestOutDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Leave requests</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary mt-2 mb-2">Create New</a>
+</p>
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AbsenseReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @switch (item.AbsenseReason)
+                    {
+                        case 0:
+                            @:Sick
+                            break;
+                        case 1:
+                            @:Vacation
+                            break;
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @switch (item.Status)
+                    {
+                        case 0:
+                            @:Approved
+                            break;
+                        case 1:
+                            @:Declined
+                            break;
+                        case 2:
+                            @:Cancelled
+                            break;
+                        case 3:
+                            @:New
+                            break;
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Fullname)
+                </td>
+                <td class="align-middle text-center">
+
+                    <a class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Details" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle fs-5"></i></a>
+                    @if(User.Identity.Name == item.Employee.Id.ToString())
+                    {
+                         <a class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Cancel" asp-action="Cancel" asp-route-id="@item.Id"><i class="bi bi-ban fs-5"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $('#table').DataTable({
+        layout: {
+            top1: 'searchBuilder',
+        }
+    });
+</script>
+

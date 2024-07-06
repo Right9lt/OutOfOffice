@@ -1,0 +1,85 @@
+﻿@model OutOfOffice.DTO.Employee.EmployeeCreateDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@{
+    var positions = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "0", Text = "HR manager" },
+        new SelectListItem { Value = "1", Text = "Project manager" },
+        new SelectListItem { Value = "2", Text = "Admin" },
+        new SelectListItem { Value = "3", Text = "Employee" },
+    };
+
+    var subdivisions = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "0", Text = "HR division" },
+        new SelectListItem { Value = "1", Text = "Node.js division" },
+        new SelectListItem { Value = "2", Text = "C# division" },
+
+    };
+}
+
+<h1>Add</h1>
+
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Fullname" class="control-label"></label>
+                <input asp-for="Fullname" class="form-control" />
+                <span asp-validation-for="Fullname" class="text-danger"></span>
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Subdivision" class="control-label"></label>
+                <select asp-for="Subdivision" class="form-control" asp-items="@subdivisions"></select>
+                <span asp-validation-for="Subdivision" class="text-danger"></span>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="Position" class="control-label"></label>
+                <select asp-for="Position" class="form-control" asp-items="@positions"></select>
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+
+            @if (User.IsInRole("2"))
+            {
+                <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="PeoplePartnerId" class="control-label"></label>
+                <select asp-for="PeoplePartnerId" class="form-control" asp-items="@ViewBag.PeoplePartners">
+                    <option value="">Select people partner</option>
+                </select>
+                <span asp-validation-for="PeoplePartnerId" class="text-danger"></span>
+            </div>
+            }
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label asp-for="OutOfOfficeBalance" class="control-label"></label>
+                <input asp-for="OutOfOfficeBalance" class="form-control" />
+                <span asp-validation-for="OutOfOfficeBalance" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-danger" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+

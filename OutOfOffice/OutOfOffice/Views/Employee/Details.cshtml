@@ -1,0 +1,101 @@
+﻿@model OutOfOffice.DTO.Employee.EmployeeOutDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Employee details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fullname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fullname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Subdivision)
+        </dt>
+        <dd class="col-sm-10">
+            @switch (Model.Subdivision)
+            {
+                case 0:
+                    @:HR division
+                    break;
+                case 1:
+                    @:Node.js division
+                    break;
+                case 2:
+                    @:C# division
+                    break;
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+        <dd class="col-sm-10">
+            @switch (Model.Position)
+            {
+                case 0:
+                    @:HR Manager
+                    break;
+                case 1:
+                    @:Project manager
+                    break;
+                case 2:
+                    @:Admin
+                    break;
+                case 3:
+                    @:Employee
+                    break;
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Status)
+            {
+                @:Activated
+            }
+            else
+            {
+                @:Deactivated
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OutOfOfficeBalance)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OutOfOfficeBalance)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PeoplePartner.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PeoplePartner.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PeoplePartner.Fullname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PeoplePartner.Fullname)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (User.IsInRole("0") || User.IsInRole("2"))
+    {
+        <a asp-action="Edit" class="btn btn-primary mt-2 mb-2" asp-route-id="@Model?.Id">Edit</a>
+    }
+    <a asp-action="Index" class="btn btn-danger mt-2 mb-2">Back to List</a>
+</div>
