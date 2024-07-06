@@ -164,6 +164,15 @@ Projects page(Employee view)
 > [!NOTE]  
 > HR manager and Employee don't have same instruments as Administator and Project Manager
 
+Projects page with applied filter
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/db12fd6d-ccf1-44dc-b3b1-b63554ca9b9b)
+
+Projects page with applied search
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/04501899-5497-4203-9203-b685e5f23ab6)
+
+Projects page with applied sorting by ascending for Start date column
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/c0be9cfc-901e-4852-8989-707c7c6113c7)
+
 Create project page
 ![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/0734a98f-c02b-48b1-94f7-b3553467287d)
 
@@ -181,4 +190,44 @@ Project details page
 Employee assignment
 ![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/d9f4f869-12cd-4b0f-a7f4-3dddb4cf132d)
 
+Leave requests page
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/74fc8358-161f-4bcc-abb8-1c91cf470fdb)
 
+Leave requests page with applied filter
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/76614e68-b080-4c35-9772-af75f8089dd5)
+
+Leave requests page with applied search
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/1fcb4fa5-a120-4171-a556-57f8db5de9f7)
+
+Leave requests page with applied sorting by descending for status column
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/cbc6cb97-e77e-45b9-94e6-95b2202efe5d)
+
+Create leave request page
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/37c39868-8163-44c8-b3d7-a4ba06bd561e)
+
+Create leave request page behaviour when requested leave days are greater that out of office balance
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/45a1b673-8036-4696-b928-d3997ca4dafe)
+
+Approval requests page(Administrator view)
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/4b007eb5-78dc-4e70-abbc-12c4196d48c1)
+
+Approval requests page(HR manager view)
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/7ea0890d-f2bf-4cf2-95b7-2268adf95a6e)
+
+Approval requests page(Project manager view)
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/3d1d53d6-f122-4258-bc08-d7f7d1fc16e4)
+
+Approval requests page(Employee view)
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/3e50d7fd-464a-406d-a9ef-d6a570ac984e)
+
+Approval requests page with appllied filter
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/48d73aaf-1346-46d9-9d63-666b1a4f62d4)
+
+Approval request page with applied search
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/3b6a8751-1481-4367-9373-18216790abdd)
+
+Approval request page with applied sorting by ascending for end status column
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/37bdc470-82d1-4028-8e4e-941215f240c9)
+
+Create approval request page
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/9bb40609-456f-42f9-880c-f0064a2d914b)
