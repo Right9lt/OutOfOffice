@@ -1,4 +1,4 @@
-#OutOfOffice
+# OutOfOffice
 
 The app was created as a test project for the vacancy of Junior CRM Developer. Project was developed by Valentyn Renhach
 
@@ -83,6 +83,23 @@ As a Project Manager, you have the following opportunities:
 ### Opportunities for Administrator
 As an Administrator, you have opportunities of the previous roles combined.
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+To run the project you need following tools:
+- PostgreSQL
+- Visual Studio IDE that supports .NET 8 and have ASP.NET expansion installed
+
+### Installation and startup
 1. Clone the repository
-2. [I'm a relative reference to a repository file](./SQL_script.sql)
+2. Execute this script [this SQL script](./SQL_script.sql) to create database
+3. Open solution with Visual Studio IDE
+4. Open `appsettings.json` and replace database connection string with your values
+5. Run the solution
+
+## Gallery
+### Table relation diagram
+
+![image](https://github.com/Right9lt/OutOfOffice/assets/40607069/cd6638af-a11f-4d16-be2d-e42c0813470b)
+
