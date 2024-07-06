@@ -3,8 +3,18 @@
 The app was created as a test project for the vacancy of Junior CRM Developer. Project was developed by Valentyn Renhach
 
 ## Table of Contents
-
-
+- [Overview](#overview)
+- [Authorization and roles opportunities](#authorization-and-roles-opportunities)
+  - [Opportunities for Employee](#opportunities-for-employee)
+  - [Opportunities for HR Manager](#opportunities-for-hr-manager)
+  - [Opportunities for Project Manager](#opportunities-for-project-manager)
+  - [Opportunities for Administrator](#opportunities-for-administrator)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation and startup](#installation-and-startup)
+- [Gallery](#gallery)
+  - [Entity Relationship diagram](#entity-relationship-diagram)
+  - [Program screenshots](#program-screenshots)
 
 ## Overview
 
