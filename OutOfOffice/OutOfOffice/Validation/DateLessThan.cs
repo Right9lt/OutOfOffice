@@ -32,7 +32,7 @@ namespace OutOfOffice.Validation
 
             if (date >= otherDate)
             {
-                return new ValidationResult($"Date must be greater than {otherDate}");
+                return new ValidationResult($"Date must be less than {otherDate}");
             }
 
             return ValidationResult.Success;

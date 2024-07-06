@@ -77,7 +77,7 @@ namespace OutOfOffice.Services
 
             if (diff > employee.OutOfOfficeBalance)
             {
-                return Result.Failure($"Requested leave days count is {diff}, which is bigger than your outOfOffice balance {employee.OutOfOfficeBalance}. Change leave dates");
+                return Result.Failure($"Requested leave days count is {diff}, which is bigger than your out of office balance ({employee.OutOfOfficeBalance}). Change leave dates");
             }
 
             var request = new LeaveRequest()
