@@ -52,7 +52,7 @@ As an HR Manager, you have the following opportunities:
   - Add new employees
   - Update employees who are under your supervision
   - Deactivate employees under your supervision
-  - View detailed information about your employee under your supervision
+  - View detailed information about employee under your supervision
 - Project management
   - Sort, filter and search in the list of projects that your subordinates are part of
   - View detailed information about project that your subordinates are part of
@@ -60,7 +60,7 @@ As an HR Manager, you have the following opportunities:
   - Sort, filter and search in the list of leave requests that you created and that are related to your subordinates
   - Create new leave requests
   - Cancel your leave requests
-  - View detailed information about your leave request or your subordinates.
+  - View detailed information about your leave request and your subordinates.
 - Approval request management
   - Sort, filter and search the list of approval requests that are related to your leave requests and your subordinates
   - View detailed information about approval requests that are related to your leave request or your subordinates
@@ -87,7 +87,7 @@ As a Project Manager, you have the following opportunities:
   - View detailed information about your leave request and employees who are participating in your projects
 - Approval request management
   - Sort, filter and search the list of approval requests that are related to your leave requests and employees who are participating in your project
-  - View detailed information about approval requests that are related to your leave request or participants of your project
+  - View detailed information about approval requests that are related to your leave request and participants of your project
   - Create approval requests that are meant to resolve leave requests of participants of your project
  
 ### Opportunities for Administrator
