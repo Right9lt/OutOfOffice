@@ -108,6 +108,17 @@ To run the project you need following tools:
 4. Open `appsettings.json` and replace database connection string with your values
 5. Run the solution
 
+> [!NOTE]  
+> Due to the requirements for the program, there are no signup instruments. To use the app, we need to create an employee with an administrator position.
+> 
+> To do that you can execute this SQL script:
+> `INSERT INTO public.employees (id, fullname, email, "password", salt, subdivision, "position", status, people_partner_id, out_of_office_balance) VALUES(1, 'Admin', 'admin@gmail.com', 'A12A92B450938BD7EA10061776CBAA5D7DB32F8D830024D982533B5D342D9508', 'A8A0ADFFF9A1DBF5F00321FB2692F33827439A6F320D75BBA8D3F28EED11100C', 0, 2, true, NULL, 84);`
+> 
+> It will create an administrator with the following credentials:
+> - Email: admin@gmail.com
+> - Password: 1111
+> You can use these credentials to login into the app.
+
 ## Gallery
 ### Entity Relationship diagram
 
