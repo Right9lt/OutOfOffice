@@ -117,6 +117,7 @@ To run the project you need following tools:
 > It will create an administrator with the following credentials:
 > - Email: admin@gmail.com
 > - Password: 1111
+> 
 > You can use these credentials to login into the app.
 
 ## Gallery
